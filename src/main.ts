@@ -1,3 +1,4 @@
-import {GameApp} from "./app/app";
+import { GameApp } from "./app/app";
+import { gameWidth, gameHeight } from "./config";
 
-const myGame = new GameApp(document.body,  window.innerWidth, window.innerHeight);
+const myGame = new GameApp(document.body, gameWidth, gameHeight);
