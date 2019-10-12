@@ -54,15 +54,16 @@ export class GameApp {
     this.app.stage.addChild(newCircle)
   }
 
+  addLine = (y: number) => {
+    const line = new PIXI.Graphics()
+    line.beginFill(lineColor)
+    line.drawRect(0, y, gameWidth, lineHeight)
+    this.app.stage.addChild(line)
+  }
+
   addLines = () => {
-    const topLine = new PIXI.Graphics()
-    topLine.beginFill(lineColor)
-    topLine.drawRect(0, topLimit - circleRadius, gameWidth, lineHeight)
-    this.app.stage.addChild(topLine)
-    const bottomLine = new PIXI.Graphics()
-    bottomLine.beginFill(lineColor)
-    bottomLine.drawRect(0, bottomLimit + circleRadius, gameWidth, lineHeight)
-    this.app.stage.addChild(bottomLine)
+    this.addLine(topLimit - circleRadius)
+    this.addLine(bottomLimit + circleRadius)
   }
 
   addPlayer = () => {
