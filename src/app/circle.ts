@@ -13,6 +13,12 @@ export class Circle extends PIXI.Graphics {
     this.y = y
   }
 
+  redraw = () => {
+    this.clear()
+    this.beginFill(this.color)
+    this.drawCircle(0, 0, circleRadius)
+  }
+
   appear = () => Promise.all([fade(this, undefined, 1), grow(this, 1)])
   disappear = () => Promise.all([fade(this), grow(this)])
 }

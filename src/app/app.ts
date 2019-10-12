@@ -13,7 +13,8 @@ import {
   baseObstacleSpeed,
   lineColor,
   lineHeight,
-  randomPlayerColor
+  randomPlayerColor,
+  colorNameMap
 } from '../config'
 import Player from './player'
 
@@ -22,6 +23,7 @@ export class GameApp {
   obstacles: Obstacle[]
   obstaclesCreated: number
   player: Player
+  score: number
 
   constructor(parent: HTMLElement, width: number, height: number) {
     this.app = new PIXI.Application({
@@ -34,6 +36,8 @@ export class GameApp {
 
     this.obstacles = []
     this.obstaclesCreated = 0
+
+    this.score = 0
 
     // init Pixi loader
     let loader = new PIXI.Loader()
@@ -54,23 +58,30 @@ export class GameApp {
     this.app.stage.addChild(newCircle)
   }
 
-  addLine = (y: number) => {
+  private addLine = (y: number) => {
     const line = new PIXI.Graphics()
     line.beginFill(lineColor)
     line.drawRect(0, y, gameWidth, lineHeight)
     this.app.stage.addChild(line)
   }
 
-  addLines = () => {
+  private addLines = () => {
     this.addLine(topLimit - circleRadius)
     this.addLine(bottomLimit + circleRadius)
   }
 
-  addPlayer = () => {
+  private increaseScore = () => {
+    this.score++
+    document.querySelector('#score').innerHTML = `SCORE: ${this.score}`
+  }
+
+  private addPlayer = () => {
     const player = new Player({
       speed: 0,
       color: randomPlayerColor(this.obstacles, this.obstaclesCreated),
-      crossedCallback: this.addCircle
+      increaseScore: this.increaseScore,
+      crossedCallback: this.addCircle,
+      newColor: () => randomPlayerColor(this.obstacles, this.obstaclesCreated)
     })
     this.player = player
     this.app.stage.addChild(this.player)
@@ -78,13 +89,15 @@ export class GameApp {
 
   private collectObstacle = obstacle => {
     obstacle.speed = 0
-    obstacle.disappear()
+    obstacle.disappear().then(() => {
+      this.obstacles = this.obstacles.filter(o => o !== obstacle)
+    })
   }
 
   private gameOver = () => {
+    if (this.player.dead) return
+    this.player.die()
     console.log('GAME OVER')
-    this.player.speed = 0
-    this.player.disappear()
   }
 
   private obstacleCollisionCheck = () => {
@@ -106,16 +119,11 @@ export class GameApp {
     this.addCircle()
     this.addPlayer()
     this.app.ticker.add(this.update)
-
-    // setInterval(() => this.addCircle(), 100)
   }
 
   private update = (delta: number) => {
     this.obstacles.forEach(c => c.update(delta))
-    this.player.update(
-      delta,
-      this.app.renderer.plugins.interaction.mouse.global
-    )
+    this.player.update(delta)
     this.obstacleCollisionCheck()
   }
 }

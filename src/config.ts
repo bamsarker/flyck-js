@@ -1,7 +1,7 @@
 import Circle from './app/circle'
 
 export const gameWidth = 500
-export const gameHeight = 800
+export const gameHeight = 900
 
 export const backgroundColor = 0xfffcf2
 
@@ -13,6 +13,14 @@ export const circleColors = [
   0x5d2e8c,
   0x00a878
 ]
+export const colorNameMap = {
+  [0xfe4a49]: 'red',
+  [0xfed766]: 'orange',
+  [0x009fb7]: 'blue',
+  [0xccff66]: 'lime',
+  [0x5d2e8c]: 'purple',
+  [0x00a878]: 'green'
+}
 export const randomCircleColor = () =>
   circleColors[Math.floor(Math.random() * circleColors.length)]
 export const randomPlayerColor = (
@@ -36,12 +44,10 @@ export const playerSpeed = 10
 
 export const lineColor = 0xcccccc
 export const lineHeight = 3
-
-export const topLimit = 175
-export const height = 400
-export const bottomLimit = topLimit + height
-
+export const circleRadius = 45
+export const topLimit = 165
+export const height = 450
+export const bottomLimit = gameHeight - circleRadius * 4
+export const startingYPosition = bottomLimit + (gameHeight - bottomLimit) / 1.55
 export const randomYPos = () => topLimit + Math.random() * height
 export const randomXPos = () => 100 + Math.random() * 300
-
-export const circleRadius = 45
