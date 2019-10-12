@@ -16,7 +16,7 @@ import {
   randomPlayerColor,
   colorNameMap
 } from '../config'
-import Player from './player'
+import Player from './Player'
 
 export class GameApp {
   private app: PIXI.Application
@@ -97,6 +97,7 @@ export class GameApp {
   private gameOver = () => {
     if (this.player.dead) return
     this.player.die()
+    document.getElementById('endgame').style.display = 'block'
     console.log('GAME OVER')
   }
 

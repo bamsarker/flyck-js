@@ -1,4 +1,4 @@
-import Circle from './app/circle'
+import Circle from './app/Circle'
 
 export const gameWidth = 500
 export const gameHeight = 900

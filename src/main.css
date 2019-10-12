@@ -11,7 +11,7 @@ body {
 }
 
 canvas,
-#game-ui {
+#ui {
   display: block;
   margin: auto;
   width: 55.5vh;
@@ -28,11 +28,12 @@ canvas,
   /* box-shadow: 0 0 5rem #a6a6a673; */
 }
 
-#game-ui {
+#ui {
   position: absolute;
   z-index: 10;
   background: none;
   pointer-events: none;
+  user-select: none;
 }
 
 #score {
@@ -42,4 +43,30 @@ canvas,
   font-size: 200%;
   color: #cccccc;
   pointer-events: none;
+}
+
+#endgame {
+  width: 100%;
+  height: 100%;
+}
+
+#endgame > .buttons {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  margin: auto;
+}
+
+.buttons > button {
+  margin: auto;
+  width: 100%;
+  border-radius: 2rem;
+  height: 4rem;
+  border: solid #cccccc 0.1rem;
+  font-size: 3vh;
+  background: #fed766;
+  font-family: 'DM Sans', sans-serif;
+  color: #000000ad;
+  pointer-events: all;
+  outline: none;
 }

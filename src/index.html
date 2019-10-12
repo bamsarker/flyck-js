@@ -12,8 +12,16 @@
 </head>
 
 <body class="test">
-    <div id="game-ui">
-        <div id="score">SCORE: 0</div>
+    <div id="ui">
+        <div id="in-game">
+            <div id="score">SCORE: 0</div>
+        </div>
+        <div id="endgame"
+             style="display: none;">
+            <div class="buttons">
+                <button onclick="window.location.reload()">Play again</button>
+            </div>
+        </div>
     </div>
     <script src="main.ts"></script>
 </body>

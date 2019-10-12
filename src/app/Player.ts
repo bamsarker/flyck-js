@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { Circle } from './circle'
+import { Circle } from './Circle'
 import {
   circleRadius,
   gameWidth,

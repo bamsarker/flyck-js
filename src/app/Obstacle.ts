@@ -1,5 +1,5 @@
 import * as PIXI from 'pixi.js'
-import { Circle } from './circle'
+import { Circle } from './Circle'
 
 const randomDirection = () => [-1, 1][Math.floor(Math.random() * 2)]
 
