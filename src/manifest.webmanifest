@@ -1,0 +1,113 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "FLYCK",
+    "scope": "/",
+    "display": "browser",
+    "start_url": "https://playflyck.com/",
+    "short_name": "FLYCK",
+    "theme_color": "transparent",
+    "description": "",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/images/453e6c15-ff29-3643-4eb0-cd0ccc7c2844.webPlatform.png",
+            "sizes": "44x44",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/cb9423eb-5229-3b15-ad2a-e9e118209ba7.webPlatform.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/29ceaa81-4944-7a3f-5d21-f72d2fa790a0.webPlatform.png",
+            "sizes": "1240x600",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/2c9ad9b2-6897-df27-af27-12a49f87b732.webPlatform.png",
+            "sizes": "300x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/92eec4b3-fa76-2efa-1d1e-ea61a9fa8390.webPlatform.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/bcb1c321-e642-3f3c-c5cc-e0d872e5ba8f.webPlatform.png",
+            "sizes": "88x88",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/b58072d4-0bd4-665a-8722-ad8dad1ae52f.webPlatform.png",
+            "sizes": "24x24",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/460c6368-b57f-1ff5-048d-2ce5ed1597a1.webPlatform.png",
+            "sizes": "50x50",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/e3ae589d-27fb-4322-2fec-e79673593c3b.webPlatform.png",
+            "sizes": "620x300",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/455f6d71-994e-2cd2-026a-3925c526c39b.webPlatform.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/940af99c-3bab-78ab-a76e-579fc419970d.webPlatform.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/4f23709e-e32a-db52-17de-4962a1adda1a.webPlatform.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/66758307-7f4f-6322-d647-8f20333c6da3.webPlatform.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/05bc131e-0806-3031-1438-359c983fb2c4.webPlatform.png",
+            "sizes": "36x36",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/417d2360-04a7-9ad7-42b7-c5722e9fe0db.webPlatform.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/20300ad2-0be7-3b1f-f100-3616e76415a5.webPlatform.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/dfa74549-6c48-1ef6-a843-6312367a37ce.webPlatform.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/1c53cc7e-451a-329a-b202-25d236117fbb.webPlatform.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/363632b0-5880-4c8b-3129-35f9b74b2497.webPlatform.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": []
+}

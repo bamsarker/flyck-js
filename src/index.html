@@ -9,6 +9,8 @@
     <link rel="stylesheet"
           type="text/css"
           href="main.css">
+    <link rel='manifest'
+          href='manifest.webmanifest'>
 </head>
 
 <body class="test">
@@ -24,6 +26,16 @@
         </div>
     </div>
     <script src="main.ts"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            if (!navigator.serviceWorker.controller) {
+                navigator.serviceWorker
+                    .register("sw.js", {
+                        scope: "./"
+                    });
+            }
+        }
+    </script>
 </body>
 
 </html>
