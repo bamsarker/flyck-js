@@ -13,7 +13,6 @@ body {
 canvas,
 #ui {
   display: block;
-  margin: auto;
   width: 55.5vh;
   height: 100vh; /* height:width ratio = 9/5  */
   background: #fffcf2;
@@ -25,7 +24,16 @@ canvas,
   bottom: 0; /* vertical center */
   left: 0;
   right: 0; /* horizontal center */
-  /* box-shadow: 0 0 5rem #a6a6a673; */
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #ui {
@@ -45,12 +53,24 @@ canvas,
   pointer-events: none;
 }
 
-#endgame {
+#endgame,
+#menu {
   width: 100%;
   height: 100%;
 }
 
-#endgame > .buttons {
+#menu > #flyck {
+  margin: auto;
+  text-align: center;
+  font-size: 643%;
+  margin-top: 40%;
+}
+
+#menu > .buttons {
+  height: 30%;
+}
+
+.buttons {
   width: 50%;
   height: 100%;
   display: flex;
@@ -69,4 +89,5 @@ canvas,
   color: #000000ad;
   pointer-events: all;
   outline: none;
+  cursor: pointer;
 }
