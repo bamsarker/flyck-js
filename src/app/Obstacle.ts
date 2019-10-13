@@ -6,6 +6,7 @@ const randomDirection = () => [-1, 1][Math.floor(Math.random() * 2)]
 export class Obstacle extends Circle {
   direction: number
   speed: number
+  collected: boolean
   constructor({ speed, y, x, color }) {
     super({ x, y, color })
     this.direction = randomDirection()

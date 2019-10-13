@@ -1,4 +1,3 @@
-import * as PIXI from 'pixi.js'
 import { Circle } from './Circle'
 import {
   circleRadius,
@@ -6,13 +5,12 @@ import {
   bottomLimit,
   playerSpeed,
   topLimit,
-  baseObstacleSpeed,
   gameHeight,
-  randomPlayerColor,
-  startingYPosition
+  startingYPosition,
+  circleColors
 } from '../config'
-import { TweenMax, Power2 } from 'gsap/TweenMax'
-import { grow, fade, promiseTo } from './animations'
+import { promiseTo, spinForever, pulse } from './animations'
+import Cluster from './Cluster'
 
 interface Vector {
   x: number
@@ -38,6 +36,7 @@ export class Player extends Circle {
   direction: Vector
   positionHistory: Vector[]
   dead: boolean
+  poweredUp: boolean
   constructor({ speed, color, crossedCallback, increaseScore, newColor }) {
     super({ x: gameWidth / 2, y: startingYPosition, color })
     this.speed = speed
@@ -81,9 +80,18 @@ export class Player extends Circle {
   }
 
   die = () => {
+    this.poweredUp = false
     this.dead = true
     this.direction = { x: 0, y: 0 }
     this.disappear()
+  }
+
+  enablePowerUp = () => {
+    this.poweredUp = true
+    this.clear()
+    this.addChild(new Cluster({ x: 0, y: 0, colors: circleColors }))
+    spinForever(this)
+    pulse(this)
   }
 
   private movementVector = () => {
@@ -146,6 +154,11 @@ export class Player extends Circle {
       this.appear()
       promiseTo(this, 0.5, { y: startingYPosition })
       this.color = this.newColor()
+
+      if (this.poweredUp) {
+        this.children[this.children.length - 1].destroy()
+        this.poweredUp = false
+      }
 
       this.redraw()
     })

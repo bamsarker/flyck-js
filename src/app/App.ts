@@ -17,6 +17,7 @@ import {
   colorNameMap
 } from '../config'
 import Player from './Player'
+import PowerUpMeter from './PowerUpMeter'
 
 export class GameApp {
   private app: PIXI.Application
@@ -24,6 +25,7 @@ export class GameApp {
   obstaclesCreated: number
   player: Player
   score: number
+  powerUpMeter: PowerUpMeter
 
   constructor(parent: HTMLElement, width: number, height: number) {
     this.app = new PIXI.Application({
@@ -89,6 +91,8 @@ export class GameApp {
 
   private collectObstacle = obstacle => {
     obstacle.speed = 0
+    obstacle.collected = true
+    this.powerUpMeter.collect(obstacle.color)
     obstacle.disappear().then(() => {
       this.obstacles = this.obstacles.filter(o => o !== obstacle)
     })
@@ -102,19 +106,32 @@ export class GameApp {
   }
 
   private obstacleCollisionCheck = () => {
-    this.obstacles.forEach(obstacle => {
-      const distance = Math.hypot(
-        obstacle.x - this.player.x,
-        obstacle.y - this.player.y
-      )
-      if (distance < circleRadius * 2) {
-        if (obstacle.color === this.player.color) this.collectObstacle(obstacle)
-        else this.gameOver()
-      }
-    })
+    this.obstacles
+      .filter(o => !o.collected)
+      .forEach(obstacle => {
+        const distance = Math.hypot(
+          obstacle.x - this.player.x,
+          obstacle.y - this.player.y
+        )
+        if (distance < circleRadius * 2) {
+          if (this.player.poweredUp || obstacle.color === this.player.color)
+            this.collectObstacle(obstacle)
+          else this.gameOver()
+        }
+      })
+  }
+
+  private addPowerUpMeter = () => {
+    this.powerUpMeter = new PowerUpMeter(this.powerUpEnabled)
+    this.app.stage.addChild(this.powerUpMeter)
+  }
+
+  private powerUpEnabled = () => {
+    this.player.enablePowerUp()
   }
 
   private onAssetsLoaded = () => {
+    this.addPowerUpMeter()
     this.addLines()
 
     this.addCircle()
