@@ -92,7 +92,7 @@ export class GameApp {
   private collectObstacle = obstacle => {
     obstacle.speed = 0
     obstacle.collected = true
-    this.powerUpMeter.collect(obstacle.color)
+    if (!this.player.poweredUp) this.powerUpMeter.collect(obstacle.color)
     obstacle.disappear().then(() => {
       this.obstacles = this.obstacles.filter(o => o !== obstacle)
     })
