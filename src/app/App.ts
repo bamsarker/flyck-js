@@ -93,9 +93,9 @@ export class GameApp {
     obstacle.speed = 0
     obstacle.collected = true
     if (!this.player.poweredUp) this.powerUpMeter.collect(obstacle.color)
-    obstacle.disappear().then(() => {
-      this.obstacles = this.obstacles.filter(o => o !== obstacle)
-    })
+    obstacle
+      .disappear()
+      .then(() => (this.obstacles = this.obstacles.filter(o => o !== obstacle)))
   }
 
   private gameOver = () => {
