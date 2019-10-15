@@ -26,8 +26,15 @@ export class GameApp {
   player: Player
   score: number
   powerUpMeter: PowerUpMeter
+  replay: () => void
 
-  constructor(parent: HTMLElement, width: number, height: number) {
+  constructor(
+    parent: HTMLElement,
+    width: number,
+    height: number,
+    replay: () => void
+  ) {
+    this.replay = replay
     this.app = new PIXI.Application({
       width,
       height,
@@ -102,6 +109,8 @@ export class GameApp {
     if (this.player.dead) return
     this.player.die()
     document.getElementById('endgame').style.display = 'block'
+    document.getElementById('play-again').addEventListener('click', this.replay)
+
     console.log('GAME OVER')
   }
 

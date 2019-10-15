@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="initial-scale=1, maximum-scale=1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
     <title>FLYCK</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="main.css">
-    <meta name="theme-color"
-          content="#fffcf2" />
-    <link rel="icon"
-          sizes="192x192"
-          href="images/2c9ad9b2-6897-df27-af27-12a49f87b732.webPlatform.png">
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="theme-color" content="#fffcf2" />
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="images/2c9ad9b2-6897-df27-af27-12a49f87b732.webPlatform.png"
+    />
 
-    <link rel="apple-touch-icon"
-          href="images/2c9ad9b2-6897-df27-af27-12a49f87b732.webPlatform.png">
+    <link
+      rel="apple-touch-icon"
+      href="images/2c9ad9b2-6897-df27-af27-12a49f87b732.webPlatform.png"
+    />
 
-    <meta name="Description"
-          content="A game about getting circles over to the other side.">
-    <link rel='manifest'
-          href='manifest.webmanifest'>
-</head>
+    <meta
+      name="Description"
+      content="A game about getting circles over to the other side."
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+  </head>
 
-<body class="test">
+  <body class="test">
     <noscript>soz, you need js for this.</noscript>
     <div id="ui">
-        <div id="menu">
-            <div id="flyck">FLYCK</div>
-            <div class="buttons">
-                <button id="play">Play</button>
-            </div>
+      <div id="menu">
+        <div id="flyck">FLYCK</div>
+        <div class="buttons">
+          <button id="play">Play</button>
         </div>
-        <div id="in-game"
-             style="display: none;">
-            <div id="score">SCORE: 0</div>
+      </div>
+      <div id="in-game" style="display: none;">
+        <div id="score">SCORE: 0</div>
+      </div>
+      <div id="endgame" style="display: none;">
+        <div class="buttons">
+          <button id="play-again">Play again</button>
         </div>
-        <div id="endgame"
-             style="display: none;">
-            <div class="buttons">
-                <button onclick="window.location.reload()">Play again</button>
-            </div>
-        </div>
+      </div>
     </div>
     <script src="main.ts"></script>
     <script>
-        if ("serviceWorker" in navigator) {
-            if (!navigator.serviceWorker.controller) {
-                navigator.serviceWorker
-                    .register("sw.js", {
-                        scope: "./"
-                    });
-            }
+      if ('serviceWorker' in navigator) {
+        if (!navigator.serviceWorker.controller) {
+          navigator.serviceWorker.register('sw.js', {
+            scope: './'
+          })
         }
+      }
     </script>
-</body>
-
+  </body>
 </html>
