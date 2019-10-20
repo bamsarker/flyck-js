@@ -37,10 +37,10 @@ export const randomPlayerColor = (
   return randomCircleColor()
 }
 
-export const baseObstacleSpeed = 2.2
+export const baseObstacleSpeed = 3
 export const obstacleSpeedModifier = 13
 
-export const playerSpeed = 10
+export const playerSpeed = 13
 
 export const lineColor = 0xcccccc
 export const lineHeight = 3
