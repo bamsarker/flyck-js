@@ -18,6 +18,7 @@ import {
 } from '../config'
 import Player from './Player'
 import PowerUpMeter from './PowerUpMeter'
+import CollectionParticle from './CollectionParticle'
 
 export class GameApp {
   private app: PIXI.Application
@@ -100,10 +101,26 @@ export class GameApp {
     this.app.stage.addChild(this.player)
   }
 
-  private collectObstacle = obstacle => {
+  private spawnParticle = (obstacle: Obstacle) => {
+    const particle = new CollectionParticle({
+      x: obstacle.x,
+      y: obstacle.y,
+      color: obstacle.color
+    })
+    this.app.stage.addChild(particle)
+    return particle
+      .moveToPowerUpMeter(this.powerUpMeter.nextPosition())
+      .then(() => particle.destroy())
+  }
+
+  private collectObstacle = (obstacle: Obstacle) => {
     obstacle.speed = 0
     obstacle.collected = true
-    if (!this.player.poweredUp) this.powerUpMeter.collect(obstacle.color)
+    if (!this.player.poweredUp) {
+      this.spawnParticle(obstacle).then(() =>
+        this.powerUpMeter.collect(obstacle.color)
+      )
+    }
     obstacle
       .disappear()
       .then(() => (this.obstacles = this.obstacles.filter(o => o !== obstacle)))
@@ -141,7 +158,7 @@ export class GameApp {
   }
 
   private powerUpEnabled = () => {
-    this.player.enablePowerUp()
+    this.player.enablePowerUp(this.powerUpMeter.reset)
   }
 
   private onAssetsLoaded = () => {

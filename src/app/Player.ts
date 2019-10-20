@@ -33,6 +33,7 @@ export class Player extends Circle {
   crossedCallback: () => void
   increaseScore: () => void
   newColor: () => number
+  launchCallback: () => void
   dragData: any
   dragging: boolean
   direction: Vector
@@ -90,13 +91,14 @@ export class Player extends Circle {
     this.disappear(10)
   }
 
-  enablePowerUp = () => {
+  enablePowerUp = (callback: () => void) => {
     this.poweredUp = true
     this.clear()
     this.addChild(new Cluster({ x: 0, y: 0, colors: circleColors }))
     spinForever(this)
     pulse(this)
     this.addClickLayer()
+    this.launchCallback = callback
   }
 
   private addClickLayer = () => {
@@ -184,6 +186,10 @@ export class Player extends Circle {
   private launch = () => {
     this.launched = true
     this.direction = normalizeVector(this.movementVector(), playerSpeed)
+    if (this.launchCallback) {
+      this.launchCallback()
+      delete this.launchCallback
+    }
   }
 
   update = (delta: number) => {

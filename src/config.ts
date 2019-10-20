@@ -3,6 +3,11 @@ import Circle from './app/Circle'
 export const gameWidth = 500
 export const gameHeight = 900
 
+export const powerUpMeterPosition = {
+  x: gameWidth - 50,
+  y: 60
+}
+
 export const backgroundColor = 0xfffcf2
 
 export const circleColors = [
@@ -21,6 +26,7 @@ export const colorNameMap = {
   [0x5d2e8c]: 'purple',
   [0x00a878]: 'green'
 }
+export const circleAlpha = 0.7
 export const randomCircleColor = () =>
   circleColors[Math.floor(Math.random() * circleColors.length)]
 export const randomPlayerColor = (

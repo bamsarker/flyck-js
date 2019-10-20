@@ -1,6 +1,11 @@
 import * as PIXI from 'pixi.js'
 import { Circle } from './Circle'
-import { gameWidth, circleRadius } from '../config'
+import {
+  gameWidth,
+  circleRadius,
+  powerUpMeterPosition,
+  circleAlpha
+} from '../config'
 import { spinForever } from './animations'
 import Cluster from './Cluster'
 
@@ -14,8 +19,7 @@ const circlePositions = [
 ]
 
 const grey = 0xaaaaaa
-
-const circleAlpha = 0.7
+const collectedGrey = 0xababab
 
 export class PowerUpMeter extends PIXI.Container {
   enableCallback: any
@@ -23,13 +27,26 @@ export class PowerUpMeter extends PIXI.Container {
   cluster: Cluster
   constructor(enableCallback: () => void) {
     super()
-    this.x = gameWidth - 50
-    this.y = 60
+    this.x = powerUpMeterPosition.x
+    this.y = powerUpMeterPosition.y
     this.enableCallback = enableCallback
 
     this.addClickLayer()
     this.cluster = new Cluster({ x: 0, y: 0 })
     this.addChild(this.cluster)
+  }
+
+  quickPreCollect = () => {
+    const nextCircle = this.cluster.circles.find(c => c.color === grey)
+    if (!nextCircle) return
+    nextCircle.color = collectedGrey
+  }
+
+  nextPosition = () => {
+    let nextCircle = this.cluster.circles.find(c => c.color === collectedGrey)
+    if (!nextCircle)
+      nextCircle = this.cluster.circles.find(c => c.color === grey)
+    return nextCircle.position
   }
 
   private addClickLayer = () => {
@@ -68,6 +85,9 @@ export class PowerUpMeter extends PIXI.Container {
     this.enableCallback()
     this.spinTween.kill()
     this.rotation = 0
+  }
+
+  reset = () => {
     this.cluster.circles.forEach((c, i) => {
       setTimeout(() => {
         c.color = grey

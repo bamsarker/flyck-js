@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Circle } from './Circle'
-import { gameWidth, circleRadius } from '../config'
+import { gameWidth, circleRadius, circleAlpha } from '../config'
 
 const circlePositions = [
   { x: 0, y: -23 },
@@ -12,8 +12,6 @@ const circlePositions = [
 ]
 
 const grey = 0xaaaaaa
-
-const circleAlpha = 0.7
 
 export class Cluster extends PIXI.Container {
   circles: Circle[]

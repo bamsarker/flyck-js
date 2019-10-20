@@ -18,17 +18,16 @@ export class Circle extends PIXI.Graphics {
   }) {
     super()
     this.color = color
-    this.beginFill(this.color)
     this.radius = radius
-    this.drawCircle(0, 0, this.radius)
+    this.beginFill(this.color).drawCircle(0, 0, this.radius)
     this.x = x
     this.y = y
   }
 
   redraw = () => {
     this.clear()
-    this.beginFill(this.color)
-    this.drawCircle(0, 0, this.radius)
+      .beginFill(this.color)
+      .drawCircle(0, 0, this.radius)
   }
 
   appear = (alpha: number = 0.8) =>

@@ -8,6 +8,16 @@ export const promiseTo = (obj, duration: number, vars) =>
     })
   )
 
+export const moveTo = (
+  displayObject,
+  duration: number = 1,
+  vars: object = {}
+) =>
+  promiseTo(displayObject, duration, {
+    ease: Power2,
+    ...vars
+  })
+
 export const grow = (
   displayObject,
   targetSize: number = 4,
