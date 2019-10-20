@@ -8,6 +8,12 @@ const loadGame = () => {
   endgame.style.display = 'none'
   menu.style.display = 'none'
   inGame.style.display = 'block'
-  const myGame = new GameApp(document.body, gameWidth, gameHeight, loadGame)
+  const myGame = new GameApp(
+    document.body,
+    inGame.querySelector('#score'),
+    gameWidth,
+    gameHeight,
+    loadGame
+  )
 }
 menu.querySelector('#play').addEventListener('click', loadGame)

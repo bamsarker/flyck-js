@@ -21,6 +21,7 @@ import PowerUpMeter from './PowerUpMeter'
 
 export class GameApp {
   private app: PIXI.Application
+  scoreElement: HTMLElement
   obstacles: Obstacle[]
   obstaclesCreated: number
   player: Player
@@ -30,6 +31,7 @@ export class GameApp {
 
   constructor(
     parent: HTMLElement,
+    scoreElement: HTMLElement,
     width: number,
     height: number,
     replay: () => void
@@ -47,6 +49,8 @@ export class GameApp {
     this.obstaclesCreated = 0
 
     this.score = 0
+    this.scoreElement = scoreElement
+    this.scoreElement.innerText = `SCORE: ${this.score}`
 
     // init Pixi loader
     let loader = new PIXI.Loader()
@@ -81,7 +85,7 @@ export class GameApp {
 
   private increaseScore = () => {
     this.score++
-    document.querySelector('#score').innerHTML = `SCORE: ${this.score}`
+    this.scoreElement.innerText = `SCORE: ${this.score}`
   }
 
   private addPlayer = () => {
