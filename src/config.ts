@@ -37,14 +37,14 @@ export const randomPlayerColor = (
   return randomCircleColor()
 }
 
-export const baseObstacleSpeed = 2.75
+export const baseObstacleSpeed = 3.25
 export const obstacleSpeedModifier = 13
 
-export const playerSpeed = 11.5
+export const playerSpeed = 12
 
 export const lineColor = 0xcccccc
 export const lineHeight = 3
-export const circleRadius = 45
+export const circleRadius = 42
 export const topLimit = 165
 export const height = 450
 export const bottomLimit = gameHeight - circleRadius * 4
