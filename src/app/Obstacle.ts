@@ -11,8 +11,8 @@ export class Obstacle extends Circle {
     super({ x, y, color })
     this.direction = randomDirection()
     this.speed = speed
-    this.scale.x = 2
-    this.scale.y = 2
+    this.scale.x = 4
+    this.scale.y = 4
     this.alpha = 0
     this.appear()
   }

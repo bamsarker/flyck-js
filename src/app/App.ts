@@ -59,7 +59,7 @@ export class GameApp {
     loader.load(this.onAssetsLoaded)
   }
 
-  private addCircle = () => {
+  private addObstacle = () => {
     const newCircle = new Obstacle({
       speed: baseObstacleSpeed + this.obstaclesCreated / obstacleSpeedModifier,
       y: randomYPos(),
@@ -93,7 +93,7 @@ export class GameApp {
       speed: 0,
       color: randomPlayerColor(this.obstacles, this.obstaclesCreated),
       increaseScore: this.increaseScore,
-      crossedCallback: this.addCircle,
+      crossedCallback: this.addObstacle,
       newColor: () => randomPlayerColor(this.obstacles, this.obstaclesCreated)
     })
     this.player = player
@@ -148,7 +148,7 @@ export class GameApp {
     this.addPowerUpMeter()
     this.addLines()
 
-    this.addCircle()
+    this.addObstacle()
     this.addPlayer()
     this.app.ticker.add(this.update)
   }

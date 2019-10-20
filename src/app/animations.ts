@@ -10,7 +10,7 @@ export const promiseTo = (obj, duration: number, vars) =>
 
 export const grow = (
   displayObject,
-  targetSize: number = 2,
+  targetSize: number = 4,
   duration: number = 0.5
 ) => promiseTo(displayObject.scale, duration, { x: targetSize, y: targetSize })
 
@@ -32,7 +32,7 @@ export const spinForever = (displayObject, duration: number = 1.5) =>
 
 export const pulse = (
   displayObject,
-  size: number = 3,
+  size: number = 4,
   duration: number = 0.75
 ) =>
   promiseTo(displayObject.scale, duration, { x: size, y: size }).then(() =>

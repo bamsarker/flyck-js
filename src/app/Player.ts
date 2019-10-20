@@ -17,6 +17,8 @@ interface Vector {
   y: number
 }
 
+const grey = 0xaaaaaa
+
 const normalizeVector = (vector: Vector, scale: number = 1) => {
   const len = Math.sqrt(vector.x * vector.x + vector.y * vector.y)
   return {
@@ -80,10 +82,12 @@ export class Player extends Circle {
   }
 
   die = () => {
+    this.buttonMode = false
+    this.interactive = false
     this.poweredUp = false
     this.dead = true
     this.direction = { x: 0, y: 0 }
-    this.disappear()
+    this.disappear(10)
   }
 
   enablePowerUp = () => {
@@ -92,6 +96,18 @@ export class Player extends Circle {
     this.addChild(new Cluster({ x: 0, y: 0, colors: circleColors }))
     spinForever(this)
     pulse(this)
+    this.addClickLayer()
+  }
+
+  private addClickLayer = () => {
+    const clickLayer = new Circle({
+      x: 0,
+      y: 0,
+      color: grey,
+      radius: circleRadius
+    })
+    clickLayer.alpha = 0
+    this.addChild(clickLayer)
   }
 
   private movementVector = () => {
@@ -156,6 +172,7 @@ export class Player extends Circle {
       this.color = this.newColor()
 
       if (this.poweredUp) {
+        this.children[this.children.length - 1].destroy()
         this.children[this.children.length - 1].destroy()
         this.poweredUp = false
       }

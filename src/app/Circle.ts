@@ -31,9 +31,9 @@ export class Circle extends PIXI.Graphics {
     this.drawCircle(0, 0, this.radius)
   }
 
-  appear = (alpha: number = 1) =>
+  appear = (alpha: number = 0.8) =>
     Promise.all([fade(this, undefined, alpha), grow(this, 1)])
-  disappear = () => Promise.all([fade(this), grow(this)])
+  disappear = (size?: number) => Promise.all([fade(this), grow(this, size)])
 }
 
 export default Circle
