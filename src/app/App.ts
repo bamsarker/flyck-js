@@ -126,9 +126,10 @@ export class GameApp {
           obstacle.x - this.player.x,
           obstacle.y - this.player.y
         )
-        if (distance < circleRadius * 2) {
-          if (this.player.poweredUp || obstacle.color === this.player.color)
-            this.collectObstacle(obstacle)
+        const beNice =
+          this.player.poweredUp || obstacle.color === this.player.color
+        if (distance < circleRadius * 2 + (beNice ? 2 : -2)) {
+          if (beNice) this.collectObstacle(obstacle)
           else this.gameOver()
         }
       })
