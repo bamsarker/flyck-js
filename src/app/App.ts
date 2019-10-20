@@ -26,8 +26,15 @@ export class GameApp {
   player: Player
   score: number
   powerUpMeter: PowerUpMeter
+  replay: () => void
 
-  constructor(parent: HTMLElement, width: number, height: number) {
+  constructor(
+    parent: HTMLElement,
+    width: number,
+    height: number,
+    replay: () => void
+  ) {
+    this.replay = replay
     this.app = new PIXI.Application({
       width,
       height,
@@ -92,16 +99,18 @@ export class GameApp {
   private collectObstacle = obstacle => {
     obstacle.speed = 0
     obstacle.collected = true
-    this.powerUpMeter.collect(obstacle.color)
-    obstacle.disappear().then(() => {
-      this.obstacles = this.obstacles.filter(o => o !== obstacle)
-    })
+    if (!this.player.poweredUp) this.powerUpMeter.collect(obstacle.color)
+    obstacle
+      .disappear()
+      .then(() => (this.obstacles = this.obstacles.filter(o => o !== obstacle)))
   }
 
   private gameOver = () => {
     if (this.player.dead) return
     this.player.die()
     document.getElementById('endgame').style.display = 'block'
+    document.getElementById('play-again').addEventListener('click', this.replay)
+
     console.log('GAME OVER')
   }
 
