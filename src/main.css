@@ -14,16 +14,20 @@ canvas,
 #ui {
   display: block;
   width: 55.5vh;
-  height: 100vh; /* height:width ratio = 9/5  */
+  height: 100vh;
+  /* height:width ratio = 9/5  */
   background: #fffcf2;
   max-height: 180vw;
-  max-width: 100vw; /* 5/9 */
+  max-width: 100vw;
+  /* 5/9 */
   margin: auto;
   position: absolute;
   top: 0;
-  bottom: 0; /* vertical center */
+  bottom: 0;
+  /* vertical center */
   left: 0;
-  right: 0; /* horizontal center */
+  right: 0;
+  /* horizontal center */
   animation: fade-in 1s;
 }
 
@@ -31,6 +35,7 @@ canvas,
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -59,27 +64,43 @@ canvas,
   height: 100%;
 }
 
-#menu > #flyck {
+#menu>#flyck {
   margin: auto;
   text-align: center;
   font-size: 643%;
   margin-top: 40%;
 }
 
-#menu > .buttons {
+#menu>.buttons {
   height: 30%;
 }
 
 .buttons {
-  width: 50%;
+  width: 60%;
   height: 100%;
   display: flex;
   margin: auto;
+  flex-direction: column;
 }
 
-.buttons > button {
+.buttons>.message {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 5em;
+}
+
+.buttons>.message>span {
+  font-size: 3em;
+}
+
+button#play-again {
+  margin-top: 3em;
+}
+
+.buttons>button {
   margin: auto;
   width: 100%;
+  max-width: 10em;
   border-radius: 2rem;
   height: 4rem;
   border: solid #cccccc 0.1rem;
