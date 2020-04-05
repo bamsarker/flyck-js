@@ -13,7 +13,7 @@ import {
   baseObstacleSpeed,
   lineColor,
   lineHeight,
-  randomPlayerColor
+  randomPlayerColor,
 } from "../config";
 import Player from "./Player";
 import PowerUpMeter from "./PowerUpMeter";
@@ -42,7 +42,7 @@ export class GameApp {
       width,
       height,
       backgroundColor: backgroundColor,
-      antialias: true
+      antialias: true,
     });
     parent.append(this.app.view); // Hack for parcel HMR
 
@@ -65,7 +65,7 @@ export class GameApp {
       speed: baseObstacleSpeed + this.obstaclesCreated / obstacleSpeedModifier,
       y: randomYPos(),
       x: randomXPos(),
-      color: randomCircleColor()
+      color: randomCircleColor(),
     });
     this.obstacles.push(newCircle);
     this.obstaclesCreated++;
@@ -95,7 +95,7 @@ export class GameApp {
       color: randomPlayerColor(this.obstacles, this.obstaclesCreated),
       increaseScore: this.increaseScore,
       crossedCallback: this.addObstacle,
-      newColor: () => randomPlayerColor(this.obstacles, this.obstaclesCreated)
+      newColor: () => randomPlayerColor(this.obstacles, this.obstaclesCreated),
     });
     this.player = player;
     this.app.stage.addChild(this.player);
@@ -105,7 +105,7 @@ export class GameApp {
     const particle = new CollectionParticle({
       x: obstacle.x,
       y: obstacle.y,
-      color: obstacle.color
+      color: obstacle.color,
     });
     this.app.stage.addChild(particle);
     return particle
@@ -116,7 +116,7 @@ export class GameApp {
   private collectObstacle = (obstacle: Obstacle) => {
     obstacle.speed = 0;
     obstacle.collected = true;
-    if (!this.player.poweredUp) {
+    if (!this.player.poweredUp && !this.powerUpMeter.full) {
       this.spawnParticle(obstacle).then(() =>
         this.powerUpMeter.collect(obstacle.color)
       );
@@ -124,7 +124,7 @@ export class GameApp {
     obstacle
       .disappear()
       .then(
-        () => (this.obstacles = this.obstacles.filter(o => o !== obstacle))
+        () => (this.obstacles = this.obstacles.filter((o) => o !== obstacle))
       );
   };
 
@@ -148,8 +148,8 @@ export class GameApp {
 
   private obstacleCollisionCheck = () => {
     this.obstacles
-      .filter(o => !o.collected)
-      .forEach(obstacle => {
+      .filter((o) => !o.collected)
+      .forEach((obstacle) => {
         const distance = Math.hypot(
           obstacle.x - this.player.x,
           obstacle.y - this.player.y
@@ -183,7 +183,7 @@ export class GameApp {
   };
 
   private update = (delta: number) => {
-    this.obstacles.forEach(c => c.update(delta));
+    this.obstacles.forEach((c) => c.update(delta));
     this.player.update(delta);
     this.obstacleCollisionCheck();
   };
