@@ -6,6 +6,10 @@ const menu = document.querySelector("#menu");
 const endgame = document.querySelector("#endgame");
 const inGame = document.querySelector("#in-game");
 
+const versionEl = document.querySelector("#version");
+
+versionEl.innerHTML = process.env.PACKAGE_VERSION;
+
 let background = new MenuBackground(document.body, gameWidth, gameHeight);
 let currentGame: GameApp;
 

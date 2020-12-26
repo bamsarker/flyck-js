@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=DM+Sans:500&display=swap');
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:500&display=swap");
 
 body {
   margin: 0;
@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   display: flex;
   background: #fffcf2;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
 }
 
 canvas,
@@ -64,14 +64,14 @@ canvas,
   height: 100%;
 }
 
-#menu>#flyck {
+#menu > #flyck {
   margin: auto;
   text-align: center;
   font-size: 643%;
   margin-top: 40%;
 }
 
-#menu>.buttons {
+#menu > .buttons {
   height: 30%;
 }
 
@@ -83,13 +83,13 @@ canvas,
   flex-direction: column;
 }
 
-.buttons>.message {
+.buttons > .message {
   font-size: 2em;
   text-align: center;
   margin-top: 5em;
 }
 
-.buttons>.message>span {
+.buttons > .message > span {
   font-size: 3em;
 }
 
@@ -97,7 +97,7 @@ button#play-again {
   margin-top: 3em;
 }
 
-.buttons>button {
+.buttons > button {
   margin: auto;
   width: 100%;
   max-width: 10em;
@@ -106,9 +106,15 @@ button#play-again {
   border: solid #cccccc 0.1rem;
   font-size: 3vh;
   background: #fed766;
-  font-family: 'DM Sans', sans-serif;
+  font-family: "DM Sans", sans-serif;
   color: #000000ad;
   pointer-events: all;
   outline: none;
   cursor: pointer;
+}
+
+#version {
+  text-align: center;
+  font-size: 0.5em;
+  opacity: 0.5;
 }
