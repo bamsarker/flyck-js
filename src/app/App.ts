@@ -156,7 +156,7 @@ export class GameApp {
         );
         const beNice =
           this.player.poweredUp || obstacle.color === this.player.color;
-        const niceBuffer = beNice ? 3 : -3;
+        const niceBuffer = beNice ? 4 : -4;
         if (distance < circleRadius * 2 + niceBuffer) {
           if (beNice) this.collectObstacle(obstacle);
           else this.gameOver();

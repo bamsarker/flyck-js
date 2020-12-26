@@ -36,13 +36,13 @@ export class PowerUpMeter extends PIXI.Container {
     this.addChild(this.cluster);
   }
 
-  quickPreCollect = () => {
+  private quickPreCollect = () => {
     const nextCircle = this.cluster.circles.find((c) => c.color === grey);
     if (!nextCircle) return;
     nextCircle.color = collectedGrey;
   };
 
-  nextPosition = () => {
+  public nextPosition = () => {
     let nextCircle = this.cluster.circles.find(
       (c) => c.color === collectedGrey
     );
